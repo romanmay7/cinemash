@@ -1,8 +1,9 @@
 import React from 'react'
 import { View, Text, Image, StyleSheet} from 'react-native'
 import colors from '../constants/colors'
-import { POSTER_API_URL } from "@env"
+//import { POSTER_API_URL } from "@env"
 
+const POSTER_API_URL = 'https://image.tmdb.org/t/p/w500/';
 const Card = ({ movie }) => (
     <View
         activeOpacity={1}
@@ -15,6 +16,9 @@ const Card = ({ movie }) => (
       />
     <View style={styles.photoDescriptionContainer}>
       <Text style={styles.text}>
+        {`${movie.original_title}`}
+      </Text>
+        <Text style={styles.text}>
         {`${movie.release_date}`}
       </Text>
     </View>
