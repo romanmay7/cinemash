@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
       borderRadius: 10,
     },
     overlayLabelText: {
-      fontSize: 30,
+      fontSize: 50,
       textAlign: 'center',
     },
 })

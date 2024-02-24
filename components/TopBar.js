@@ -1,14 +1,32 @@
-import React from 'react';
+//import React from 'react';
 import { View, Text, StyleSheet , Image} from 'react-native';
-import {FontAwesome} from "@expo/vector-icons"
+import {FontAwesome} from "@expo/vector-icons";
+import colors from "../constants/colors";
+import {useNavigation} from '@react-navigation/native';
+
+
+
+
+
+
 function TopBar() {
+    const navigation = useNavigation();
+
+    function _onPressButton() {
+    
+    navigation.navigate('Search Movies');
+    console.log("Search Movies");
+  }
+
     return (
         <View style={styles.container}>
             <View >
                 <Image style={styles.icon} source={require("../assets/icons/popcorn.png")}></Image>
             </View>
-            <FontAwesome name="comments" size={24} color="#5c5c5c"/>
-            <FontAwesome name="user" size={24} color="#5c5c5c"/>
+            <FontAwesome name="comments" size={40} color="#5c5c5c"/>
+            <FontAwesome name="user" size={40} color="#5c5c5c"/>
+            <FontAwesome name="search" size={40} color="#5c5c5c" onPress={_onPressButton}  />
+
         </View>
     )
 }
@@ -30,8 +48,8 @@ const styles = StyleSheet.create({
         elevation:9,
     },
     icon: {
-        width: 24,
-        height: 24
+        width: 40,
+        height: 40
     },
 
 })
