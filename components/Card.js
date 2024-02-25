@@ -1,30 +1,52 @@
 import React from 'react'
-import { View, Text, Image, StyleSheet} from 'react-native'
+import { View, Text, Image, Modal, TouchableOpacity, StyleSheet } from 'react-native'
 import colors from '../constants/colors'
 //import { POSTER_API_URL } from "@env"
+import MovieInfoModal from "./MovieInfoModal"
 
 const POSTER_API_URL = 'https://image.tmdb.org/t/p/w500/';
-const Card = ({ movie }) => (
-    <View
-        activeOpacity={1}
-        style={styles.card}
-    >
-    <Image
-      style={styles.image}
-      source={{uri: `${POSTER_API_URL}${movie.poster_path}`}}
-      resizeMode="cover"
-      />
-    <View style={styles.photoDescriptionContainer}>
-      <Text style={styles.text}>
-        {`${movie.original_title}`}
-      </Text>
-        <Text style={styles.text}>
-        {`${movie.release_date}`}
-      </Text>
-    </View>
-  </View>
-)
+const Card = ({ movie }) => {
+  const [isOpen, setIsOpen] = React.useState(false)
 
+  const openModal = () => setIsOpen(true)
+  const closeModal = () => setIsOpen(false)
+
+  return (
+    <>
+      <Modal
+        visible={isOpen}
+        transparent={true}
+        onRequestClose={closeModal}
+        animationType="slide"
+      >
+        <TouchableOpacity onPress={closeModal} style={{ height: "100%" }} />
+        <MovieInfoModal movie={movie} />
+      </Modal>
+
+      <TouchableOpacity style={{ height: "100%" }} onPress={openModal}>
+        <View
+          activeOpacity={1}
+          style={styles.card}
+        >
+          <Image
+            style={styles.image}
+            source={{ uri: `${POSTER_API_URL}${movie.poster_path}` }}
+            resizeMode="cover"
+          />
+          <View style={styles.photoDescriptionContainer}>
+
+            <Text style={styles.text}>
+              {`${movie.original_title}`}
+            </Text>
+            <Text style={styles.text}>
+              {`${movie.release_date}`}
+            </Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    </>
+  )
+}
 
 const styles = StyleSheet.create({
     card: {
