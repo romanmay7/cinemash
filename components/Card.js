@@ -23,7 +23,7 @@ const Card = ({ movie }) => {
         <MovieInfoModal movie={movie} />
       </Modal>
 
-      <TouchableOpacity onPress={openModal}>
+      <TouchableOpacity style={{ height: "100%" }} onPress={openModal}>
         <View
           activeOpacity={1}
           style={styles.card}
