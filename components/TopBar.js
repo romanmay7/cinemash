@@ -12,10 +12,16 @@ import {useNavigation} from '@react-navigation/native';
 function TopBar() {
     const navigation = useNavigation();
 
-    function _onPressButton() {
+    function _onPressSearchButton() {
     
     navigation.navigate('Search Movies');
     console.log("Search Movies");
+  }
+
+    function _onPressUsersButton() {
+    
+    navigation.navigate('User Profile Info');
+    console.log("User Profile Info");
   }
 
     return (
@@ -24,8 +30,8 @@ function TopBar() {
                 <Image style={styles.icon} source={require("../assets/icons/popcorn.png")}></Image>
             </View>
             <FontAwesome name="comments" size={40} color="#5c5c5c"/>
-            <FontAwesome name="user" size={40} color="#5c5c5c"/>
-            <FontAwesome name="search" size={40} color="#5c5c5c" onPress={_onPressButton}  />
+            <FontAwesome name="user" size={40} color="#5c5c5c"  onPress={_onPressUsersButton} />
+            <FontAwesome name="search" size={40} color="#5c5c5c" onPress={_onPressSearchButton}  />
 
         </View>
     )
